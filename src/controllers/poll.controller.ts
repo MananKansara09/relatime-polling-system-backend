@@ -48,7 +48,6 @@ class PollController {
     try {
       const user = req.user;
       const pollId = req.params.id;
-      console.log(pollId);
       const userData = req.body.optionId;
       const newPoll = await this.pollService.pollResponse(userData, user, pollId);
       res.status(200).json({ data: newPoll, message: 'response submited' });

@@ -112,7 +112,7 @@ class pollService {
     // const session = await mongoose.startSession();
     // session.startTransaction();
     try {
-      const pollById: any = await this.polls.findById(pollsId).session(session);
+      const pollById: any = await this.polls.findById(pollsId);
       if (!pollById) throw new HttpException(404, 'Poll not found');
       const option = pollById.options.id(optionId);
       if (!option) throw new HttpException(404, 'Option not found in poll');
@@ -134,7 +134,7 @@ class pollService {
     // const session = await mongoose.startSession();
     // session.startTransaction();
     try {
-      const pollById: any = await this.polls.findById(pollId).session(session);
+      const pollById: any = await this.polls.findById(pollId);
       if (!pollById) throw new HttpException(404, 'Poll not found');
       const message = { user: user.id, text:comment };
       pollById.comments.push(message);
